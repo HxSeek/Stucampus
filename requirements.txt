@@ -1,3 +1,6 @@
 Django==1.5.1
 wsgiref==0.1.2
 pyyaml==3.10
+lxml
+requests
+DjangoUeditor
