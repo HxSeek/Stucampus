@@ -20,3 +20,11 @@ RAVEN_CONFIG = {
     'dsn': '',
 }
 
+
+RQ_QUEUES = {
+    'pdf2img': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+    },
+}

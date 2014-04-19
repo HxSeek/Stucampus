@@ -11,6 +11,8 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^ueditor/', include('DjangoUeditor.urls')),
+    url(r'^django-rq/', include('django_rq.urls')),
+
     url(r'^$', 'stucampus.master.views.front.index', name='home'),
     url(r'^aboutus$', 'stucampus.master.views.front.about_us', name='aboutus'),
     url(r'^manage/', include('stucampus.master.urls', namespace='master')),

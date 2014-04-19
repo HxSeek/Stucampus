@@ -11,6 +11,7 @@ from django.utils.decorators import method_decorator
 from stucampus.magazine.models import Magazine
 from stucampus.magazine.forms import MagazineForm 
 from stucampus.account.permission import check_perms
+from stucampus.magazine.pdf2img import pdf2img
 
 
 MAGAZINE_NAME = {
@@ -30,7 +31,8 @@ def magazine_list(request, name):
 def display(request, id):
     magazine = get_object_or_404(Magazine, id=id)
     pdfjs_url = os.path.join('/', 'pdfjs', 'web', 'viewer.html')
-    pdf_path = os.path.join('/', 'media', str(magazine.pdf_file))
+    pdf_path = os.path.join('/', 'media', 'magazine', magazine.name,
+                            'img_' + os.path.basename(magazine.pdf_file.name))
     return HttpResponseRedirect(pdfjs_url + '?file=' + pdf_path)
 
 
@@ -41,6 +43,7 @@ def manage(request):
 
 
 class AddView(View):
+
     @method_decorator(check_perms('magazine.magazine_add'))
     def get(self, request):
         form = MagazineForm()
@@ -53,11 +56,13 @@ class AddView(View):
         if not form.is_valid():
             return render(request, 'magazine/magazine-form.html',
                     {'form': form, 'post_url': reverse('magazine:add')})
-        form.save()
+        magazine = form.save()
+        pdf2img.delay(magazine)
         return HttpResponseRedirect(reverse('magazine:manage'))
 
 
 class ModifyView(View):
+
     @method_decorator(check_perms('magazine.magazine_modify'))
     def get(self, request):
         maga_id = request.GET.get('id')
@@ -78,7 +83,8 @@ class ModifyView(View):
             return render(request, 'magazine/magazine-form.html',
                     {'form': form,
                      'post_url': reverse('magazine:modify') + '?id=' + maga_id})
-        form.save()
+        magazine = form.save()
+        pdf2img.delay(magazine)
         return HttpResponseRedirect(reverse('magazine:manage'))
 
 

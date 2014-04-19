@@ -78,6 +78,8 @@ INSTALLED_APPS = (
 
     'raven.contrib.django.raven_compat',
     'DjangoUeditor',
+    'django_rq',
+
     'stucampus.master',
     'stucampus.account',
     'stucampus.infor',
