@@ -1,26 +1,25 @@
 #-*- coding: utf-8 -*-
 from django import forms
-from django.utils.translation import ugettext as _
 
 from stucampus.minivideo.models import Resource
 
 class SignUpForm(forms.ModelForm):
 
     team_psw = forms.CharField(
-        label=_(u'team_psw'), max_length=30,
+        label=(u'team_psw'), max_length=30,
         widget=forms.PasswordInput(),
         error_messages={
-            'required': _(u'此字段必填'),
-            'max_length': _(u'密码长度不得超过30')
+            'required': (u'此字段必填'),
+            'max_length': (u'密码长度不得超过30')
         }
     )
     
     confirm = forms.CharField(
-        label=_(u'密码确认'), max_length=30,
+        label=(u'密码确认'), max_length=30,
         widget=forms.PasswordInput(),
         error_messages={
-            'required': _(u'此字段必填'),
-            'max_length': _(u'密码长度不得超过30')
+            'required': (u'此字段必填'),
+            'max_length': (u'密码长度不得超过30')
         }
     )
 
@@ -28,7 +27,7 @@ class SignUpForm(forms.ModelForm):
         team_psw = self.cleaned_data.get('team_psw')
         confirm = self.cleaned_data.get('confirm')
         if not team_psw == confirm:
-            raise forms.ValidationError(_(u'前后输入密码不一致'))
+            raise forms.ValidationError((u'前后输入密码不一致'))
         return confirm
 
     class Meta:
@@ -38,11 +37,11 @@ class SignUpForm(forms.ModelForm):
 class CommitForm(forms.ModelForm):
 
     confirm = forms.CharField(
-        label=_(u'密码'), max_length=30,
+        label=(u'密码'), max_length=30,
         widget=forms.PasswordInput(),
         error_messages={
-            'required': _(u'此字段必填'),
-            'max_length': _(u'密码长度不得超过30')
+            'required': (u'此字段必填'),
+            'max_length': (u'密码长度不得超过30')
         }
     )
 
@@ -50,7 +49,7 @@ class CommitForm(forms.ModelForm):
         team_psw = Resource.objects.get('team_psw')
         confirm = self.cleaned_data.get('confirm')
         if not team_psw == confirm:
-            raise forms.ValidationError(_(u'密码错误'))
+            raise forms.ValidationError((u'密码错误'))
         return confirm
 
     class Meta:

@@ -1,6 +1,8 @@
-from django.views.generic import View
-from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from django.views.generic import View
 
 from stucampus.minivideo.models import Resource
 from stucampus.minivideo.forms import SignUpForm, CommitForm
@@ -22,13 +24,13 @@ class SignUpView(View):
             if not form.is_valid():
                 return render(request, 'minivideo/signup.html', {'form':form})
             form.save()
-            return render(request, 'minivideo/list.html')
+            return HttpResponseRedirect(reverse('minivideo:resource_list'))
         resource = get_object_or_404(Resource, pk=resource_id)
         form = CommitForm(instance=resource)
         if not form.is_valid():
         	return render(request, 'minivideo/signup.html', {'form':form})
         form.save()
-        return render(request, 'minivideo/list.html')
+        return HttpResponseRedirect(reverse('minivideo:resource_list'))
 
 
 def resource_list(request):
