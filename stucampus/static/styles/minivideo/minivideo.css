@@ -1,4 +1,4 @@
-﻿.minivideo_list{
+.minivideo_list{
 	position: relative;
 	overflow: hidden;
 	padding: 28px 0;
@@ -94,4 +94,62 @@
 	font-size: 14px;
 	padding: 5px 8px 6px;
 	color: #666;
+}
+
+.minivideo_form{
+	position: relative;
+	overflow: hidden;
+	padding: 28px 0;
+}
+
+.minivideo_form h2{
+	font-weight: normal;
+	font-size: 28px;
+	margin-bottom: 8px;
+	padding-bottom: 3px;
+	color: #000;
+	border-bottom: 2px solid #5bc4be;
+}
+
+.minivideo_form form{
+	position: relative;
+	overflow: hidden;
+	font-size: 18px;
+	width: 300px;
+	margin: 0 auto;
+	padding: 8px 0;
+}
+
+.minivideo_form form p{
+	position: relative;
+	overflow: hidden;
+	padding: 5px 0;
+}
+
+.minivideo_form form span{
+	position: relative;
+	overflow: hidden;
+	padding: 3px 5px;
+}
+
+.minivideo_form form input{
+	font-size: 18px;
+	font-family: Microsoft Yahei;
+	padding: 2px;
+	border-radius: 2px;
+	border: 1px solid #5bc4be;
+}
+
+.minivideo_form form .form_btn{
+	font-size: 20px;
+	background-color: #5bc4be;
+	color: #fff;
+	padding: 5px 12px;
+	border: none;
+	border-radius: 3px;
+}
+
+.minivideo_form form .form_btn:hover{
+	background: rgb(9,108,111);
+	cursor: pointer;
 }
