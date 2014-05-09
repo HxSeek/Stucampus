@@ -10,16 +10,18 @@ from stucampus.minivideo.forms import SignUpForm, CommitForm
 class SignUpView(View):
     def get(self, request):
         resource_id = request.GET.get('id')        
-        if  resource_id is  None:
+        if resource_id is None:
             form = SignUpForm()
-            return render(request, 'minivideo/signup.html', {'form':form})
+	    flag = False
+            return render(request, 'minivideo/signup.html', {'form':form,'flag':flag})
+	flag = True
         resource = get_object_or_404(Resource, pk=resource_id)
         form = CommitForm(instance=resource)
-        return render(request, 'minivideo/signup.html', {'form':form})
+        return render(request, 'minivideo/signup.html', {'form':form,'flag':flag})
 
     def post(self, request):
         resource_id = request.GET.get('id')        
-        if  resource_id is  None:
+        if resource_id is None:
             form = SignUpForm(request.POST)
             if not form.is_valid():
                 return render(request, 'minivideo/signup.html', {'form':form})
