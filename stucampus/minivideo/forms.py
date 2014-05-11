@@ -42,6 +42,9 @@ class SignUpForm(forms.ModelForm):
 
 class CommitForm(forms.ModelForm):
 
+    video_intro = forms.CharField(
+        widget=forms.Textarea({'maxlength':200}),
+        )
 
     confirm = forms.CharField(
         label=(u'密码'), max_length=30,
