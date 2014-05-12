@@ -23,6 +23,12 @@ class SignUpForm(forms.ModelForm):
         }
     )
 
+    def clean_team_captain_stuno(self):
+        stuno = self.cleaned_data.get('team_captain_stuno')
+        if Resource.objects.filter(team_captain_stuno=stuno).exists():
+            raise forms.ValidationError((u'该学号已报名'))
+        return stuno
+
     def clean_confirm(self):
         team_psw = self.cleaned_data.get('team_psw')
         confirm = self.cleaned_data.get('confirm')
@@ -36,6 +42,10 @@ class SignUpForm(forms.ModelForm):
 
 class CommitForm(forms.ModelForm):
 
+    video_intro = forms.CharField(
+        widget=forms.Textarea({'maxlength':200}),
+        )
+
     confirm = forms.CharField(
         label=(u'密码'), max_length=30,
         widget=forms.PasswordInput(),
@@ -46,7 +56,9 @@ class CommitForm(forms.ModelForm):
     )
 
     def clean_confirm(self):
-        team_psw = Resource.objects.get('team_psw')
+        stuno = self.cleaned_data.get('team_captain_stuno')
+        resource = Resource.objects.get(team_captain_stuno=stuno)
+        team_psw = resource.team_psw
         confirm = self.cleaned_data.get('confirm')
         if not team_psw == confirm:
             raise forms.ValidationError((u'密码错误'))
@@ -55,7 +67,7 @@ class CommitForm(forms.ModelForm):
     class Meta:
          model = Resource
          exclude = ('team_captain', 'team_captain_phone', 
-            'team_captain_stuno', 'team_captain_college',
+             'team_captain_college',
             'team_members1_name', 'team_members1_id',
             'team_members2_name', 'team_members2_id',
             'team_members3_name', 'team_members3_id', 
