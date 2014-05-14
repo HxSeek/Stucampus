@@ -1,8 +1,11 @@
+import re
+import requests
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views.generic import View
+
 
 from stucampus.minivideo.models import Resource
 from stucampus.minivideo.forms import SignUpForm, CommitForm
@@ -67,11 +70,22 @@ def index(request):
 def details(request):
     resource_id = request.GET.get('id')
     resource = get_object_or_404(Resource,pk=resource_id)
-    return render(request,'minivideo/details.html',{'resource':resource})
+    url = 'http://v.youku.com/v_show/id_(.*?).html'
+    req = re.compile(url)
+    number = re.search(req, resource.video_link)
+    return render(request,'minivideo/details.html',{'resource':resource, 'number' : number})
 
-def votes(request):
-    resource_id = request.GET.get('id')
-    resource = get_object_or_404(Resource, pk=resource_id)
-    resource.votes +=1
-    resource.save()
-    return HttpResponseRedirect('/minivideo/details/?id=%s' % resource_id)
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
