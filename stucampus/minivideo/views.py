@@ -37,6 +37,7 @@ class SignUpView(View):
         form = CommitForm(request.POST,request.FILES,instance=resource)
         if not form.is_valid():
         	return render(request, 'minivideo/signup.html', {'form':form,'flag':flag})
+        resource.has_verified = not resource.has_verified
         form.save()
         return HttpResponseRedirect(reverse('minivideo:resource_list'))
 
@@ -64,7 +65,7 @@ def verify(request):
     return HttpResponseRedirect(reverse('minivideo:resource_list'))
 
 def index(request):
-    resources = Resource.objects.all()
+    resources = Resource.objects.all().filter(has_verified=True).order_by('?')
     return render(request,'minivideo/index.html',{'resources':resources})
 
 def details(request):
@@ -72,7 +73,9 @@ def details(request):
     resource = get_object_or_404(Resource,pk=resource_id)
     url = 'http://v.youku.com/v_show/id_(.*?).html'
     req = re.compile(url)
-    number = re.search(req, resource.video_link).group(1)
+    number = re.search(req, resource.video_link)
+    if number:
+        number = number.group(1)
     return render(request,'minivideo/details.html',{'resource':resource, 'number' : number})
 
 
