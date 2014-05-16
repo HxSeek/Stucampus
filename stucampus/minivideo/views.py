@@ -6,10 +6,10 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views.generic import View
 
-
 from stucampus.minivideo.models import Resource
 from stucampus.minivideo.forms import SignUpForm, CommitForm
 from stucampus.account.permission import check_perms
+
 
 class SignUpView(View):
     def get(self, request):
@@ -43,7 +43,7 @@ class SignUpView(View):
         resource = Resource.objects.get(team_captain_stuno=request.POST['team_captain_stuno'])
         form = CommitForm(request.POST,request.FILES,instance=resource)
         if not form.is_valid():
-        	return render(request, 'minivideo/signup.html', {'form':form,'flag':flag})
+            return render(request, 'minivideo/signup.html', {'form':form,'flag':flag})
         resource.has_verified = False
         form.save()
         return HttpResponseRedirect( reverse('minivideo:details')+'?id='+str(resource.id) )
@@ -71,9 +71,11 @@ def verify(request):
     resource.save()
     return HttpResponseRedirect(reverse('minivideo:resource_list'))
 
+
 def index(request):
     resources = Resource.objects.all().filter(has_verified=True).order_by('?')
     return render(request,'minivideo/index.html',{'resources':resources})
+
 
 def details(request):
     resource_id = request.GET.get('id')
