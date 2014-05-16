@@ -39,7 +39,7 @@ class SignUpView(View):
         	return render(request, 'minivideo/signup.html', {'form':form,'flag':flag})
         resource.has_verified = not resource.has_verified
         form.save()
-        return HttpResponseRedirect(reverse('minivideo:resource_list'))
+        return HttpResponseRedirect( reverse('minivideo:details')+'?id='+str(resource.id) )
 
 
 def resource_list(request):
