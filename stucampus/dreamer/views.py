@@ -8,18 +8,47 @@ from .models import Application
 from .forms import AppForm
 
 
-class ApplyView(View):
+class PApplyView(View):
 
     def get(self, request):
-        return render(request, 'dreamer/loading.html', {'form': AppForm()})
+        return render(request, 'dreamer/pc_form.html', {'form': AppForm()})
 
     def post(self, request):
         form = AppForm(request.POST)
         if not form.is_valid():
-            return render(request, 'dreamer/loading.html',
+            return render(request, 'dreamer/pc_form.html',
                           {'form': form})
         form.save()
-        return HttpResponseRedirect(reverse('dreamer:index'))
+        return HttpResponseRedirect(reverse('dreamer:p_success'))
+
+
+class MApplyView(View):
+
+    def get(self, request):
+        return render(request, 'dreamer/mobile_form.html', {'form': AppForm()})
+
+    def post(self, request):
+        form = AppForm(request.POST)
+        if not form.is_valid():
+            return render(request, 'dreamer/mobile_form.html',
+                          {'form': form})
+        form.save()
+        return HttpResponseRedirect(reverse('dreamer:m_success'))
+
+
+def p_success(request):
+
+    return render(request, 'dreamer/pc_success.html')
+
+
+def m_success(request):
+
+    return render(request, 'dreamer/mobile_success.html')
+
+
+def loading(request):
+
+    return render(request, 'dreamer/loading.html')
 
 
 def manage_list(request):
