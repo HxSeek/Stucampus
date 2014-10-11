@@ -1,3 +1,4 @@
+#-*- coding: utf-8
 from django.db import models
 
 from stucampus.account.models import Student
@@ -7,11 +8,7 @@ class Organization(models.Model):
 
     class Meta:
         permissions = (
-            ('organizations_list', 'List all organizations'),
-            ('organization_show', 'Show information of an organization.'),
-            ('organization_create', 'Create an organization'),
-            ('organization_edit', 'Edit information of an organization'),
-            ('organization_del', 'Delete an organization')
+            ('organization_manager', u'组织帐号管理员'),
         )
 
     name = models.CharField(max_length=20)
@@ -23,3 +20,4 @@ class Organization(models.Model):
     is_banned = models.BooleanField(default=False)
     ban_reason = models.CharField(max_length=250, null=True, blank=True)
     is_deleted = models.BooleanField(default=False)
+

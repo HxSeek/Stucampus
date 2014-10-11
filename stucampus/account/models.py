@@ -7,19 +7,8 @@ class Student(models.Model):
 
     class Meta:
         permissions = (
-            ('students_list', 'List all students'),
-            ('student_show', 'Show the information of student.'),
-            ('student_create', 'Create a new student.'),
-            ('student_edit', 'Edit the information of students.'),
-            ('student_del', 'Delete students'),
-
-            ('org_managers_list', 'List all managers of an organization.'),
-            ('org_managers_create', 'Create a new manager.'),
-            ('org_managers_del', 'Remove a manager from an organization.'),
-            ('members_list', 'List the members in an organization.'),
-            ('member_show', 'Show the information of member.'),
-            ('member_create', 'Create a new member in organization.'),
-            ('member_del', 'Remove a member from an organization.')
+            ('website_admin', u'学子天地网站管理员'),
+            ('student_manager', u'学生帐号管理员'),
         )
 
     COLLEGE_CHOICES = (
@@ -54,3 +43,4 @@ class UserActivityLog(models.Model):
     ip_address = models.GenericIPAddressField(null=True, blank=True)
     time = models.DateTimeField(auto_now=False, auto_now_add=True)
     behavior = models.CharField(max_length=250)
+
