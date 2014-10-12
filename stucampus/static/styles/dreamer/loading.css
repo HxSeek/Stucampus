@@ -9,13 +9,18 @@
         .content{
             position: relative;
             overflow: hidden;
-            width: 330px;
             margin: 0 auto;
             padding: 18px 38px 0;
             font-family: Microsoft Yahei;
             line-height: 250%;
             background-color: white;
             text-align: center;
+        }
+
+        @media screen and (min-width: 768px){
+            .content{
+                width: 330px;
+            }
         }
 
         .content h1{
