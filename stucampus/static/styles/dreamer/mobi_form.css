@@ -72,6 +72,30 @@
             font-size: 1.5em;
         }
 
+        .joinus div{
+            position: relative;
+            line-height: 250%;
+        }
+
+        .joinus div label{
+            position: relative;
+            display: block;
+        }
+
+        .joinus form ul{
+            position: relative;
+            list-style: none;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .joinus form li{
+            position: relative;
+            float: left;
+            list-style: none;
+            overflow: hidden;
+        }
+
         .footer{
             position: relative;
             overflow: hidden;
