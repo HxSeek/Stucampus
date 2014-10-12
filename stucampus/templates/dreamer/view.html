@@ -32,14 +32,21 @@
 
         <li>
             <label>志愿</label>
-            {{ app.volunteers }}
+            {% for volunteer in app.volunteers %}
+                {{ volunteer }}
+            {% endfor %}
+        </li>
+
+        <li>
+            <label>联系方式</label>
+            {{ app.telphone }}
         </li>
 
         <li>
             <label>喜欢的运动</label>
             {{ app.fav_sports }}
         </li>
-
+        
 
         <li>
             <label>兴趣特长</label>

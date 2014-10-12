@@ -101,7 +101,7 @@
 				<label for="sid">学号</label>
 				{{ form.stu_num }}
                 <span class="error">
-                {% for error in form.resource_title.errors %}
+                {% for error in form.stu_num.errors %}
                     {{ error }}
                 {% endfor %}
                 </span>
@@ -110,7 +110,7 @@
 				<label for="studentname">姓名</label>
 				{{ form.name }}
                 <span class="error">
-                {% for error in form.resource_title.errors %}
+                {% for error in form.name.errors %}
                     {{ error }}
                 {% endfor %}
                 </span>
@@ -119,7 +119,7 @@
 				<label for="college">学院</label>
 				{{ form.college }}
                 <span class="error">
-                {% for error in form.resource_title.errors %}
+                {% for error in form.college.errors %}
                     {{ error }}
                 {% endfor %}
                 </span>
@@ -128,7 +128,7 @@
 				<label>性别</label>
 				{{ form.sex }}
                 <span class="error">
-                {% for error in form.resource_title.errors %}
+                {% for error in form.sex.errors %}
                     {{ error }}
                 {% endfor %}
                 </span>
@@ -137,16 +137,25 @@
 				<label>志愿（可多选）</label>
 				{{ form.volunteers }}
                 <span class="error">
-                {% for error in form.resource_title.errors %}
+                {% for error in form.volunteers.errors %}
                     {{ error }}
                 {% endfor %}
                 </span>
 			</div>
+            <p>
+                <label for="sport">联系的方式</label>
+                {{ form.telphone }}
+                <span class="error">
+                {% for error in form.telphone.errors %}
+                    {{ error }}
+                {% endfor %}
+                </span>
+            </p>
 			<p>
 				<label for="sport">喜欢的运动</label>
 				{{ form.fav_sports }}
                 <span class="error">
-                {% for error in form.resource_title.errors %}
+                {% for error in form.fav_sports.errors %}
                     {{ error }}
                 {% endfor %}
                 </span>
@@ -155,7 +164,7 @@
 				<label for="interest">兴趣与特长</label>
 				{{ form.interest }}
                 <span class="error">
-                {% for error in form.resource_title.errors %}
+                {% for error in form.interest.errors %}
                     {{ error }}
                 {% endfor %}
                 </span>
