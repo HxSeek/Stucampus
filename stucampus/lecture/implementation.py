@@ -1,10 +1,7 @@
 #-*- coding: utf-8 -*-
 import re
-from django.utils import timezone
 import datetime
-
-from stucampus.spider.models import Notification
-from stucampus.spider.spider import find_content_between_two_marks, MatchError
+from stucampus.spider.spider import MatchError
 from stucampus.lecture.models import LectureMessage
 
 
@@ -99,7 +96,7 @@ TITLE_PATTERN = (
     (u'题' + COLON + WHITESPACE +u'目：' + WHITESPACE, u'\n'),
     (u'主.*?题' + COLON + WHITESPACE, u'\n'),
     (u'主' + COLON + WHITESPACE + u'题：' + WHITESPACE, u'\n'),
-    )
+)
 
 
 PLACE_PATTERN = (
@@ -107,7 +104,7 @@ PLACE_PATTERN = (
     (u'报.*?告.*?地.*?点' + COLON + WHITESPACE, u'\n'),
     (u'地.*?点' + COLON + WHITESPACE, u'\n'),
     (u'地' + COLON + WHITESPACE + u'点' + WHITESPACE, u'\n'),
-    )
+)
 
 
 SPEAKER_PATTERN = (
@@ -118,7 +115,7 @@ SPEAKER_PATTERN = (
     (u'主.*?讲：' + COLON + WHITESPACE, u'\n'),
     (u'主' + COLON + WHITESPACE + u'讲' + WHITESPACE, u'\n'),
     (u'\n', u'教.*?授.*?简.*?介'),
-    )
+)
 
 
 DATETIME_PATTERN = (
@@ -134,7 +131,7 @@ DATE_PATTERN = (
     r'\d{4}'+u'年'+r'\d{1,2}'+u'月'+r'\d{1,2}' + u'号',
     r'\d{4}'+r'\w'+r'\d{1,2}'+r'\w'+r'\d{1,2}',
     r'\d{4}'+r'.'+r'\d{1,2}'+r'.'+r'\d{1,2}',
-    )                   
+)
 
 
 def parse_date(content):
@@ -154,7 +151,7 @@ TIME_PATTERN = (
     r'\d{1,2}' + u'：' + r'\d{1,2}' + u'—' + r'\d{1,2}' + u'：' + r'\d{1,2}',
     r'\d{1,2}:\d{1,2}',
     r'\d{1,2}' + u'：' + r'\d{1,2}',
-    )
+)
 
 
 def parse_time(content):
