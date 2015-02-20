@@ -43,7 +43,7 @@ a,button,input,h1,h2,h3{
 	position: relative;
 	overflow: hidden;
 	height: 380px;
-	background: #5bc4be url(/static/images/coverphoto/current.jpg) no-repeat;
+	background: #5bc4be url(/static/images/coverphoto/current.jpg) center top no-repeat;
 }
 /** center url(static/images/coverphoto/current.jpg) no-repeat **/
 
@@ -52,9 +52,10 @@ a,button,input,h1,h2,h3{
 	top: 12px;
 	right: 18px;
 	font-family: serif;
-	font-size: 14px;
+	font-size: 13px;
 	color: #fff;
 }
+/**
 .header .home_title{
 	position: relative;
 	overflow: hidden;
@@ -66,9 +67,31 @@ a,button,input,h1,h2,h3{
 	text-align: center;
 	text-shadow: 0 0 1px #f5f5f5;
 }
+**/
+.header .home_title{
+	position: relative;
+	overflow: hidden;
+	width: 120px;
+	height: 120px;
+	margin: 68px auto 0;
+	padding: 3px;
+	background: rgba(255,255,255,0.3);
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
+.header .home_title img{
+	border: none;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
 .header .home_description{
 	position: relative;
 	overflow: hidden;
+	font-size: 16px;
 	color: #fff;
 	margin: 30px 0;
 	text-align: center;
