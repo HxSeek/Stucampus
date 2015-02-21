@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block htmltitle %}
+<title>深大校园讲座预告 - 深圳大学学子天地</title>
+{% endblock %}
+
 {% block htmlhead %}
     {% load html_tools %}
     {{ 'lecture/lec_act_show.css' | as_css }}
@@ -10,7 +14,7 @@
     <!-- 主体  Begin -->
     <div id="main-container">
         <table>
-            <caption>讲座信息平台</caption>
+            <caption>深圳大学校园讲座预告</caption>
             <tbody>
                 <tr>
                     <td class="time">时间</td>
