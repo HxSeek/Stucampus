@@ -18,13 +18,18 @@ MAGAZINE_NAME = {
         'langtaosha': u'浪淘沙',
         }
 
+MAGAZINE_PUBLISHER = {
+        'szuyouth': u'深大青年杂志社',
+        'langtaosha': u'浪淘沙文学社',
+        }
+
 
 def magazine_list(request, name):
     maga_list = Magazine.objects. \
             filter(name=MAGAZINE_NAME[name]).order_by('-issue')
     if not magazine_list:
         raise Http404
-    return render(request, 'magazine/list.html', {'list': maga_list})
+    return render(request, 'magazine/list.html', {'list': maga_list, 'magazine_publisher': MAGAZINE_PUBLISHER[name]})
 
 
 def display(request, id):
