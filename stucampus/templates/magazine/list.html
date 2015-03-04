@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block htmltitle %}
+<title>{{ magazine_publisher }} - 深圳大学学子天地</title>
+{% endblock %}
+
 {% block htmlhead %}
     {% load html_tools %}
     {{ 'magazine/list.css' | as_css }}
@@ -7,7 +11,7 @@
 
 {% block content %}
 <div class="main_container">
-    <h2>杂志列表</h2>
+    <h2>{{ magazine_publisher }} 杂志列表</h2>
     <div class="line_title"></div>
     {% for magazine in list %}
     <li>

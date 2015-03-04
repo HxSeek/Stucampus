@@ -19,6 +19,11 @@ def index(request):
     return render_to_response('lecture/home.html', {'table': table})
 
 
+def mobile(request):
+    table = LectureMessage.generate_messages_table()
+    return render_to_response('lecture/mobile.html', {'table': table})
+
+
 @check_perms('spider.spider_manager')
 def auto_add(request):
     ''' add lecture from notification '''
