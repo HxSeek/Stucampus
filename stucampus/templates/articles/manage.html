@@ -39,7 +39,7 @@
         <div class="row">
             <li style="width:70%">
                 <label>小编</label>
-                {{ article.editor.username }}
+                {{ article.editor.student.screen_name }}
             </li>
             <li>
                 <label>修改日期</label>
@@ -59,28 +59,50 @@
         </div>
         <div class="line"></div>
         <div class="row" style="text-align:center">
+            {% if perms.articles.article_manage %}
             <a href="{% url 'articles:del_article' %}?id={{ article.pk }}">
-                {% if article.deleted %} 
+                {% if article.deleted %}
                     恢复
-                {% else %} 
+                {% else %}
                     删除
                 {% endif %}
             </a>
+            {% endif %}
+            {% if perms.articles.article_manage %}
             <a href="{% url 'articles:set_important' %}?id={{ article.pk }}">
-                {% if article.important %} 
+                {% if article.important %}
                     从首页焦点下架
-                {% else %} 
+                {% else %}
                     放上首页焦点
                 {% endif %}
             </a>
-            <a href="{% url 'articles:publish' %}?id={{ article.pk }}">
-                {% if article.publish %} 
-                    解除发布
+            {% else %}
+            <a href="">
+                {% if article.important %}
+                    已被设为焦点
                 {% else %} 
+                    尚未设为焦点
+                {% endif %}
+            {% endif %}
+            {% if perms.articles.article_manage %}
+                {% if article.publish %}
+                    <a href="{% url 'articles:publish' %}?id={{ article.pk }}">
+                    解除发布
+                {% else %}
+                    <a href="{% url 'articles:publish' %}?id={{ article.pk }}", style="background:#ff696a ">
                     发布文章
                 {% endif %}
             </a>
-            <a href="{% url 'articles:modify' %}?id={{ article.pk }}">编辑</a>
+            {% else %}
+            <a href="">
+                {% if article.publish %}
+                    已通过
+                {% else %}
+                    未审核
+                {% endif %}
+            </a>
+            {% endif %}
+            <a href="{% url 'articles:modify' %}?id={{ article.pk }}&page={{ pageid }}">编辑</a>
         </div>
     </div>
     {% endfor %}
