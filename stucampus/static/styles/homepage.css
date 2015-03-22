@@ -101,6 +101,11 @@
 	padding: 8px 5px 2px;
 }
 
+.content .cont_articles .articles_list ul a p img{
+	float: left;
+	margin-right: 8px;
+}
+
 .content .cont_articles .articles_list ul a{
 	position: relative;
 	overflow: hidden;
