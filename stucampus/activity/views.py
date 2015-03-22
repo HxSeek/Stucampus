@@ -14,12 +14,12 @@ from stucampus.account.permission import check_perms
 
 def index(request):
     table = ActivityMessage.generate_messages_table()
-    return render_to_response('activity/home.html', {'table': table})
+    return render(request, 'activity/home.html', {'table': table})
 
 
 def mobile(request):
     table = ActivityMessage.generate_messages_table()
-    return render_to_response('activity/mobile.html', {'table': table})
+    return render(request, 'activity/mobile.html', {'table': table})
 
 
 class ManageView(generic.View):
