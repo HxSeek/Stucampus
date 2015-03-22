@@ -6,8 +6,7 @@
 
 {% block htmlhead %}
     {% load html_tools %}
-    {{ 'lecture/lec_act_show.css' | as_css }}
-    {{ 'table/table_activity.js' | as_js }}
+    {{ 'lecture/lec_act_mobile.css' | as_css }}
 {% endblock %}
 
 {% block content %}
@@ -18,18 +17,19 @@
             <tbody>
                 <tr>
                     <td class="time">时间</td>
-                    {% for date in table.date %}
-                        <td class="{% cycle 'day1' 'day2' 'day3' 'day4' 'day5' 'day6' 'day7' %}" style="text-align:center">
+                    <td style="text-align:center">上午</td>
+                    <td style="text-align:center">下午</td>
+                </tr>
+
+                {% for day_list in table.day_tr %}
+                <tr>
+                    <td class="time {% cycle 'day1' 'day2' 'day3' 'day4' 'day5' 'day6' 'day7' %}">
                             {% cycle '周一' '周二' '周三' '周四' '周五' '周六' '周日' %}<br/>
-                            {{ date | date:"m月d日" }}
-                        </td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    <td class="time">上午</td>
-                    {% for msg_list in table.morning %}
+                            {{ day_list.date | date:"m月d日" }}
+                     </td>
+
                         <td class="{% cycle 'day1' 'day2' 'day3' 'day4' 'day5' 'day6' 'day7' as day %}">
-                        {% for msg in msg_list %}
+                        {% for msg in day_list.morning %}
                             <div class="message">
                                 <p><strong>{{ msg.title }}</strong></p>
                                 <div class="line"></div>
@@ -48,13 +48,9 @@
                             </div>
                         {% endfor %}
                         </td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    <td class="time">下午</td>
-                    {% for msg_list in table.afternoon %}
+
                         <td class="{% cycle 'day1' 'day2' 'day3' 'day4' 'day5' 'day6' 'day7' as day %}">
-                        {% for msg in msg_list %}
+                        {% for msg in day_list.afternoon %}
                             <div class="message">
                                 <p><strong>{{ msg.title }}</strong></p>
                                 <div class="line"></div>
@@ -73,8 +69,9 @@
                             </div>
                         {% endfor %}
                         </td>
-                    {% endfor %}
+
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
