@@ -16,12 +16,12 @@ from stucampus.account.permission import check_perms
 
 def index(request):
     table = LectureMessage.generate_messages_table()
-    return render_to_response('lecture/home.html', {'table': table})
+    return render(request, 'lecture/home.html', {'table': table})
 
 
 def mobile(request):
     table = LectureMessage.generate_messages_table()
-    return render_to_response('lecture/mobile.html', {'table': table})
+    return render(request, 'lecture/mobile.html', {'table': table})
 
 
 @check_perms('spider.spider_manager')

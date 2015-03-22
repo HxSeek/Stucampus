@@ -6,9 +6,9 @@
     {% block htmltitle %}<title>深圳大学学子天地</title>{% endblock %}
     {% block keywords %}{% endblock %}{% block description %}{% endblock %}
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta name="HandheldFriendly" content="true" />
-	{% load html_tools %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="HandheldFriendly" content="true" />
+    {% load html_tools %}
     <!--[if IE]>
     {{ 'ie-fix.css' | as_css }}
     <![endif]-->
@@ -30,57 +30,79 @@
     {% block htmlhead %}
     {% endblock %}
 </head>
-<script>
-	$(function(){
-	   $('.home_nav > a').each(function(){
-	   	if( $(this).attr('href').search('^'+location.pathname,'i') == 0){
-			$(this).addClass('nav_current');
-			return false;
-		}
-	   }); 
-	});
+<script type="text/javascript">
+    $(function(){
+       $('.home_nav > a').each(function(){
+           if( $(this).attr('href').search('^'+location.pathname,'i') == 0){
+            $(this).addClass('nav_current');
+            return false;
+        }
+       }); 
+    });
 </script>
 <body>
 
 <div class="inner_body">
 {% block header %}
 <div class="header">
-	<div class="coverphoto_author">封面 By Justin Leibow</div>
-	<div class="central">
-		<div class="home_title"><img src="/static/images/stulogo.jpg" height="120px" width="120px" border=0 /></div>
-		<div class="home_description">深圳大学学子天地  深大第一学生门户网站</div>
-		<div class="home_nav">
-			<a href="/">学子首页</a>
-			<a href="{% url 'lecture:index' %}">深大讲座</a>
-			<a href="{% url 'activity:index' %}">活动预告</a>
-			<a href="http://stu.szu.edu.cn:8080">服务专区</a>
-		</div>
-	</div>
+    <div class="coverphoto_author">封面 By Justin Leibow</div>
+    <div class="central">
+        <div class="home_title"><img src="/static/images/stulogo.jpg" height="120px" width="120px" border=0 /></div>
+        <div class="home_description">深圳大学学子天地  深大第一学生门户网站</div>
+        <div class="home_nav">
+            <a href="/">学子首页</a>
+            <a href="{% url 'lecture:index' %}">深大讲座</a>
+            <a href="{% url 'activity:index' %}">活动预告</a>
+            <a href="http://stu.szu.edu.cn/articles/photography/">深大摄影</a>
+            <a href="http://stu.szu.edu.cn:8080" rel="nofollow">服务专区</a>
+        </div>
+        <div class="home_nav_switch home_nav">
+            <a class="home_nav_show" onclick="home_nav_switch(1);" href="#">显示菜单</a>
+            <a class="home_nav_hide" onclick="home_nav_switch(0);" href="#">隐藏菜单</a>
+        </div>
+    </div>
 </div>
+<script type="text/javascript">
+    var home_nav=$('.home_nav');
+    var home_nav_show=$('.home_nav_show');
+    var home_nav_hide=$('.home_nav_hide');
+
+    function home_nav_switch(st) {
+    if (st == '0') {
+        home_nav[0].style.display='none';
+        home_nav_hide[0].style.display='none';
+        home_nav_show[0].style.display='block';
+    } else {
+        home_nav[0].style.display='block';
+        home_nav_hide[0].style.display='block';
+        home_nav_show[0].style.display='none';
+    }
+}
+</script>
 {% endblock %}
 
 {% block content %}
 {% endblock %}
 
 <div class="footer">
-	<div class="central">
-		{% nospaces %}
-		<!-- <a href="">开发团队</a> -->
-		<a href="http://weibo.com/stucampus">新浪微博</a>
+    <div class="central">
+        {% nospaces %}
+        <!-- <a href="">开发团队</a> -->
+        <a href="http://weibo.com/stucampus">新浪微博</a>
         {% if user.is_authenticated %}
-        <a href="{% url 'master:admin_index' %}">组织管理</a>
+        <a href="{% url 'master:admin_index' %}">后台管理</a>
         {% else %}
-        <a href="{% url 'account:sign_in' %}">用户登录</a>
+        <a href="{% url 'account:sign_in' %}">后台登录</a>
         {% endif %}
         {% endnospaces %}
-	</div>
+    </div>
 </div>
 
 <div class="copyright central">
-	版权所有 © 2001～2014 深圳大学学子天地 - 粤ICP备05008884号
-	<div style="display: none;">
-		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5826529'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5826529' type='text/javascript'%3E%3C/script%3E"));</script>
-	</div>
+    版权所有 © 2001～2014 深圳大学学子天地 - 粤ICP备05008884号
+    <div style="display: none;">
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5826529'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5826529' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
 </div>
 
 </div><!--end of inner_body-->
