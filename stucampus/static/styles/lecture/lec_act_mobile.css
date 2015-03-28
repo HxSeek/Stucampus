@@ -1,18 +1,18 @@
 #main-container{
-	width: 90%;
-	position: relative;
-	margin: 0 auto;
-	overflow: auto;
+    width: 90%;
+    position: relative;
+    margin: 0 auto;
+    overflow: auto;
 }
 
 #main-container a{
-	display: block;
-	position: relative;
-	margin: 5px;
-	padding: 10px;
-	overflow: hidden;
-	background: #ffffff;
-	border-radius: 5px;
+    display: block;
+    position: relative;
+    margin: 5px;
+    padding: 10px;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     color: #7e7e7e;
@@ -21,12 +21,12 @@
 }
 
 .message{
-	position: relative;
-	margin: 5px;
-	padding: 10px;
-	overflow: hidden;
-	background: #ffffff;
-	border-radius: 5px;
+    position: relative;
+    margin: 5px;
+    padding: 10px;
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     color: #7e7e7e;
@@ -38,48 +38,65 @@
 }
 
 .line{
-	width: 100%;
-	border-top: solid #e5e5e5 1px;
-	margin: 5px auto;
+    width: 100%;
+    border-top: solid #e5e5e5 1px;
+    margin: 5px auto;
 }
 
 #main-container img{
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 table{
-	width:100%;
-	background-color: #ffffff;
-	margin-bottom: 25px;
+    width:100%;
+    background-color: #ffffff;
+    margin-bottom: 25px;
+}
 
+.table-header{
+    font-family: "Microsoft Yahei";
+    text-align: center;
+    padding: 3px 0;
+}
+
+.table-header h2{
+    font-weight: normal;
+    font-size: 24px;
+    color: #57595b;
+    line-height: 200%;
+}
+
+.table-header p{
+    font-size: 0.9em;
+    color: #57595b;
+    padding: 3px 0;
 }
 
 caption{
-	font-family: "Microsoft Yahei";
-	font-size: 24px;
-	color: #57595b;
-	line-height: 200%;
+    font-family: "Microsoft Yahei";
+    font-size: 24px;
+    color: #57595b;
+    line-height: 200%;
 }
 
 td{
-	font-family: "Microsoft Yahei";
-	font-size: 14px;
-	line-height: 200%;
-	border: 0px #f7f7f7 solid;
-	min-width: 72px;
-	text-align: left;
-	vertical-align: top;	
+    font-family: "Microsoft Yahei";
+    font-size: 14px;
+    line-height: 200%;
+    border: 0px #f7f7f7 solid;
+    min-width: 72px;
+    text-align: left;
+    vertical-align: top;    
 }
 
 .time{
-	width: 55px;
-	background: #f7f7f7;
-	color: #7e7e7e;
-	text-align: center;
-	vertical-align: middle;
+    background: #ddd;
+    color: #666;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .day1,.day2,.day3,.day4,.day5,.day6,.day7{
-	background-color: #a0d8ef;
-	color: #007bbb;
+    background-color: #a0d8ef;
+    color: #007bbb;
 }
