@@ -86,6 +86,8 @@ a,button,input,h1,h2,h3{
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
+    height: 120px;
+    width: 120px;
 }
 
 .header .home_description{
