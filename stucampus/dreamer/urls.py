@@ -1,15 +1,16 @@
-from django.conf.urls import url, patterns
+from django.conf.urls import patterns, url
 
-from .views import PApplyView, MApplyView, p_success, m_success
-from .views import loading, manage_list, app_view
+from stucampus.dreamer.views import *
 
 urlpatterns = patterns(
     '',
-    #url(r'^$', loading, name='loading'),
-    #url(r'^pc/$', PApplyView.as_view(), name='index'),
-    #url(r'^pc/success/$', p_success, name='p_success'),
-    #url(r'^mobile/$', MApplyView.as_view(), name='mobile_index'),
-    #url(r'^mobile/success/$', m_success, name='m_success'),
-    url(r'^list/$', manage_list, name='list'),
-    url(r'^view/$', app_view, name='view'),
+    url(r'index$', index),
+    url(r'^signup/$', SignUp.as_view(), name='signup'),
+    url(r'check_msg/$', CheckMsg.as_view(), name='check'),
+    url(r'succeed/$', succeed),
+    url(r'^sunup/$', alldetail, name='sunup'),
+    url(r'^management/$', alllist, name='list'),
+    url(r'^management/delete/$', delete, name='delete'),
+    url(r'^management/search/$', search, name='search'),
+    url(r'^management/detail/$', detail, name='detail'),
 )
